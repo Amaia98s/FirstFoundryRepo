@@ -12,53 +12,53 @@ contract Calculadora {
     address public admin;
 
     //Events
-    event Addition (uint256 num1_, uint256 num2_, uint256 resultado_);
-    event Substraction (uint256 num1_, uint256 num2_, uint256 resultado_);
-    event Multiplier (uint256 num1_, uint256 num2_, uint256 resultado_);
-    event Division (uint256 num1_, uint256 num2_, uint256 resultado_);
+    event Addition(uint256 num1_, uint256 num2_, uint256 resultado_);
+    event Substraction(uint256 num1_, uint256 num2_, uint256 resultado_);
+    event Multiplier(uint256 num1_, uint256 num2_, uint256 resultado_);
+    event Division(uint256 num1_, uint256 num2_, uint256 resultado_);
 
     //Modifiers
 
-    modifier onlyAdmin{
-        require (msg.sender == admin, "Not allowed");
+    modifier onlyAdmin() {
+        require(msg.sender == admin, "Not allowed");
         _;
     }
-    
-    constructor(uint256 firstresultado_, address admin_){
+
+    constructor(uint256 firstresultado_, address admin_) {
         resultado = firstresultado_;
         admin = admin_;
     }
+
     //Functions
     //1.Addition
-    function addition (uint256 num1_, uint256 num2_) external onlyAdmin returns (uint256 resultado_) {
+    function addition(uint256 num1_, uint256 num2_) external onlyAdmin returns (uint256 resultado_) {
         resultado_ = num1_ + num2_;
         resultado = resultado_;
 
-        emit Addition(num1_, num2_ , resultado_);
+        emit Addition(num1_, num2_, resultado_);
     }
+
     //2.Substraction
-    function substraction (uint256 num1_, uint256 num2_) external onlyAdmin returns(uint256 resultado_){
-        resultado_ = num1_ -num2_;
+    function substraction(uint256 num1_, uint256 num2_) external onlyAdmin returns (uint256 resultado_) {
+        resultado_ = num1_ - num2_;
         resultado = resultado_;
 
-        emit Substraction (num1_, num2_, resultado_);
+        emit Substraction(num1_, num2_, resultado_);
     }
+
     //3.Multiplier
-    function multiplier (uint256 num1_, uint256 num2_) external onlyAdmin returns (uint256 resultado_){
+    function multiplier(uint256 num1_, uint256 num2_) external onlyAdmin returns (uint256 resultado_) {
         resultado_ = num1_ * num2_;
-        resultado = resultado_; 
+        resultado = resultado_;
 
         emit Multiplier(num1_, num2_, resultado_);
     }
+
     //4.Division
-    function division (uint256 num1_, uint256 num2_) external onlyAdmin returns (uint256 resultado_){
+    function division(uint256 num1_, uint256 num2_) external onlyAdmin returns (uint256 resultado_) {
         resultado_ = num1_ / num2_;
         resultado = resultado_;
 
         emit Division(num1_, num2_, resultado_);
-    }                         
-
-
-
-
+    }
 }
